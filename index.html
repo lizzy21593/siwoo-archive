@@ -512,7 +512,7 @@ body {
     관심을 끌 수는 있을 거라고 생각했어요.
     내심 어느 정도 기대는 했던 거죠. (웃음)
     결과적으로 기대를 훌쩍 넘는 사랑을 받았고 그래서 지금도 얼떨떨해요.
-    한편으론 두렵기도 하고요.
+    한편으로는 두렵기도 하고요.
 </div>
 
 
@@ -1101,12 +1101,14 @@ function showPage() {
 
             } else {
 
-                rightPage.src = "";
-                rightPage.style.display = "none";
+    rightPage.src = "";
+    rightPage.style.display = "none";
 
-                pageNumber.textContent =
-                    String(currentPage).padStart(2, "0");
-            }
+    document.querySelector(".left-page").style.width = "100%";
+
+    pageNumber.textContent =
+        String(currentPage).padStart(2, "0");
+}
         }
     }
 
