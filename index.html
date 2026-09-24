@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIWOO ARCHIVE</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f5f3ef;
+    color: #171717;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero {
+    min-height: 100vh;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.hero-title {
+    margin-top: auto;
+    margin-bottom: 40px;
+}
+
+.hero-title h1 {
+    font-size: clamp(60px, 13vw, 180px);
+    font-weight: 400;
+    letter-spacing: -6px;
+    line-height: 0.85;
+}
+
+.hero-title p {
+    margin-top: 25px;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.intro {
+    padding: 100px 35px;
+    max-width: 900px;
+}
+
+.intro h2 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+
+.intro p {
+    font-size: 28px;
+    line-height: 1.45;
+    font-weight: 300;
+}
+
+.archive {
+    padding: 0 35px 100px;
+}
+
+.archive-title {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #171717;
+    padding-top: 15px;
+    margin-bottom: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.card {
+    min-height: 65vh;
+    background: #ddd;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card.one {
+    background: linear-gradient(135deg, #d8d4ce, #918d88);
+}
+
+.card.two {
+    background: linear-gradient(135deg, #222, #777);
+}
+
+.card.three {
+    background: linear-gradient(135deg, #eee, #aaa);
+}
+
+.card-content {
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.card-content span {
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.card-content h3 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: 8px;
+}
+
+.footer {
+    border-top: 1px solid #171717;
+    margin: 0 35px;
+    padding: 20px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 20px;
+    }
+
+    .hero-title h1 {
+        font-size: 18vw;
+        letter-spacing: -2px;
+    }
+
+    .intro {
+        padding: 80px 20px;
+    }
+
+    .intro p {
+        font-size: 21px;
+    }
+
+    .archive {
+        padding: 0 20px 70px;
+    }
+
+    .card {
+        min-height: 55vh;
+    }
+
+    .card-content h3 {
+        font-size: 32px;
+    }
+
+    .footer {
+        margin: 0 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+    <div class="top">
+        <span>SIWOO ARCHIVE</span>
+        <span>2026</span>
+    </div>
+
+    <div class="hero-title">
+        <h1>PARK<br>SIWOO</h1>
+        <p>MILAN · SEPTEMBER 2026</p>
+    </div>
+
+</section>
+
+
+<section class="intro">
+
+    <h2>01 — MILAN FASHION WEEK</h2>
+
+    <p>
+        A small archive of Park Siwoo's
+        Milan Fashion Week journey.
+        From the streets of Milan to the
+        MM6 runway.
+    </p>
+
+</section>
+
+
+<section class="archive">
+
+    <div class="archive-title">
+        <span>ARCHIVE</span>
+        <span>01—03</span>
+    </div>
+
+    <div class="card one">
+        <div class="card-content">
+            <span>MILAN · 2026.09</span>
+            <h3>ARRIVAL</h3>
+        </div>
+    </div>
+
+    <div class="card two">
+        <div class="card-content">
+            <span>MM6 · MILAN</span>
+            <h3>THE SHOW</h3>
+        </div>
+    </div>
+
+    <div class="card three">
+        <div class="card-content">
+            <span>MILAN · STREET</span>
+            <h3>AFTER SHOW</h3>
+        </div>
+    </div>
+
+</section>
+
+
+<footer class="footer">
+
+    <span>FOR SIWOO</span>
+    <span>TO BE CONTINUED</span>
+
+</footer>
+
+</body>
+</html>
