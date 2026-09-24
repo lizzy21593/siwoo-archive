@@ -67,16 +67,78 @@ body {
    MAGAZINE PAGES
 ========================= */
 
-.magazine-pages {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+.magazine-reader {
+    width: 100%;
+    max-width: 1100px;
+    margin: 50px auto 80px;
 }
 
-.magazine-pages img {
+.magazine-spread {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+}
+
+.magazine-page {
+    position: relative;
+    width: 50%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.magazine-page img {
     display: block;
     width: 100%;
     height: auto;
+}
+
+.left-page {
+    box-shadow: -8px 12px 30px rgba(80, 60, 90, 0.12);
+}
+
+.right-page {
+    box-shadow: 8px 12px 30px rgba(80, 60, 90, 0.12);
+}
+
+.magazine-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: 1px solid #d8cfdf;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #806a91;
+    font-size: 30px;
+    line-height: 36px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.magazine-arrow:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.magazine-arrow.left {
+    left: -55px;
+}
+
+.magazine-arrow.right {
+    right: -55px;
+}
+
+.magazine-page-number {
+    margin-top: 18px;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #806a91;
 }
 
 
@@ -221,7 +283,42 @@ body {
     body {
         font-size: 14px;
     }
+.magazine-reader {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
 
+.magazine-spread {
+    width: 100%;
+}
+
+.magazine-page {
+    width: 100% !important;
+}
+
+.magazine-page.right-page {
+    display: none !important;
+}
+
+.magazine-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+.magazine-arrow.left {
+    left: 5px;
+}
+
+.magazine-arrow.right {
+    right: 5px;
+}
+
+.magazine-page-number {
+    margin-top: 12px;
+    font-size: 9px;
+}
 }
 
 </style>
@@ -251,27 +348,27 @@ body {
      MAGAZINE PAGES
 ========================= -->
 
-<section class="magazine-pages">
+<section class="magazine-reader">
 
-    <img src="page4.jpg" alt="SIWOO magazine page 4">
+    <div class="magazine-spread cover">
 
-    <img src="page1.jpg" alt="SIWOO magazine page 1">
+        <button class="magazine-arrow left" onclick="prevPage()">‹</button>
 
-    <img src="page2.jpg" alt="SIWOO magazine page 2">
+        <div class="magazine-page left-page">
+            <img id="leftPage" src="page4.jpg" alt="SIWOO magazine page">
+        </div>
 
-    <img src="page3.jpg" alt="SIWOO magazine page 3">
+        <div class="magazine-page right-page">
+            <img id="rightPage" src="" alt="SIWOO magazine page">
+        </div>
 
-    <img src="page5.jpg" alt="SIWOO magazine page 5">
+        <button class="magazine-arrow right" onclick="nextPage()">›</button>
 
-    <img src="page6.jpg" alt="SIWOO magazine page 6">
+    </div>
 
-    <img src="page7.jpg" alt="SIWOO magazine page 7">
-
-    <img src="page8.jpg" alt="SIWOO magazine page 8">
-
-    <img src="page9.jpg" alt="SIWOO magazine page 9">
-
-    <img src="page10.jpg" alt="SIWOO magazine page 10">
+    <div class="magazine-page-number">
+        <span id="pageNumber">COVER</span>
+    </div>
 
 </section>
 
@@ -933,7 +1030,120 @@ body {
 </footer>
 
 </div>
+<script>
+const magazinePages = [
+    "page4.jpg",
+    "page11.jpg",
+    "page12.jpg",
+    "page13.jpg",
+    "page14.jpg",
+    "page1.jpg",
+    "page2.jpg",
+    "page3.jpg",
+    "page5.jpg",
+    "page6.jpg",
+    "page7.jpg",
+    "page8.jpg",
+    "page9.jpg",
+    "page10.jpg"
+];
 
+function showPage() {
+
+    if (currentPage === 0) {
+
+        leftPage.src = magazinePages[0];
+        rightPage.style.display = "none";
+
+        document.querySelector(".left-page").style.width = "100%";
+
+        pageNumber.textContent = "COVER";
+
+    } else {
+
+        rightPage.style.display = "block";
+
+        document.querySelector(".left-page").style.width = "50%";
+
+        leftPage.src = magazinePages[currentPage];
+
+        if (magazinePages[currentPage + 1]) {
+            rightPage.src = magazinePages[currentPage + 1];
+        } else {
+            rightPage.src = "";
+            rightPage.style.display = "none";
+        }
+
+        const leftNumber = currentPage;
+        const rightNumber = currentPage + 1;
+
+        if (magazinePages[currentPage + 1]) {
+            pageNumber.textContent =
+                String(leftNumber).padStart(2, "0") +
+                " — " +
+                String(rightNumber).padStart(2, "0");
+        } else {
+            pageNumber.textContent =
+                String(leftNumber).padStart(2, "0");
+        }
+    }
+
+    document.querySelector(".magazine-arrow.left").style.visibility =
+        currentPage === 0 ? "hidden" : "visible";
+
+    document.querySelector(".magazine-arrow.right").style.visibility =
+        currentPage >= magazinePages.length - 1 ? "hidden" : "visible";
+}
+
+function nextPage() {
+
+    const isMobile = window.innerWidth <= 600;
+
+    if (isMobile) {
+
+        if (currentPage < magazinePages.length - 1) {
+            currentPage += 1;
+        }
+
+    } else {
+
+        if (currentPage === 0) {
+            currentPage = 1;
+        } else if (currentPage + 2 < magazinePages.length) {
+            currentPage += 2;
+        }
+
+    }
+
+    showPage();
+}
+
+
+function prevPage() {
+
+    const isMobile = window.innerWidth <= 600;
+
+    if (isMobile) {
+
+        if (currentPage > 0) {
+            currentPage -= 1;
+        }
+
+    } else {
+
+        if (currentPage === 1) {
+            currentPage = 0;
+        } else if (currentPage > 1) {
+            currentPage -= 2;
+        }
+
+    }
+
+    showPage();
+}
+
+showPage();
+</script>
 </body>
 
 </html>
