@@ -1,245 +1,904 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SIWOO ARCHIVE</title>
+    <title>SIWOO ARCHIVE</title>
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    background: #f5f3ef;
-    color: #171717;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        body {
+            background: #f5f3ef;
+            color: #171717;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.8;
+        }
 
-.hero {
-    min-height: 100vh;
-    padding: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+        .archive {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
 
-.top {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
+        /* =========================
+           HEADER
+        ========================= */
 
-.hero-title {
-    margin-top: auto;
-    margin-bottom: 40px;
-}
+        .header {
+            text-align: center;
+            padding: 30px 0 50px;
+        }
 
-.hero-title h1 {
-    font-size: clamp(60px, 13vw, 180px);
-    font-weight: 400;
-    letter-spacing: -6px;
-    line-height: 0.85;
-}
+        .header h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: 6px;
+        }
 
-.hero-title p {
-    margin-top: 25px;
-    font-size: 13px;
-    letter-spacing: 3px;
-}
+        .header p {
+            margin-top: 10px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #777;
+        }
 
-.intro {
-    padding: 100px 35px;
-    max-width: 900px;
-}
+        /* =========================
+           MAGAZINE PAGES
+        ========================= */
 
-.intro h2 {
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 3px;
-    margin-bottom: 35px;
-}
+        .magazine-pages {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
 
-.intro p {
-    font-size: 28px;
-    line-height: 1.45;
-    font-weight: 300;
-}
+        .magazine-pages img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
 
-.archive {
-    padding: 0 35px 100px;
-}
+        /* =========================
+           INTERVIEW
+        ========================= */
 
-.archive-title {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid #171717;
-    padding-top: 15px;
-    margin-bottom: 30px;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
+        .interview {
+            margin-top: 100px;
+            padding-top: 60px;
+            border-top: 1px solid #222;
+        }
 
-.card {
-    min-height: 65vh;
-    background: #ddd;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: flex-end;
-    padding: 25px;
-    position: relative;
-    overflow: hidden;
-}
+        .interview-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
 
-.card.one {
-    background: linear-gradient(135deg, #d8d4ce, #918d88);
-}
+        .interview-title h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 38px;
+            font-weight: 400;
+            letter-spacing: 5px;
+        }
 
-.card.two {
-    background: linear-gradient(135deg, #222, #777);
-}
+        .interview-title p {
+            margin-top: 10px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #777;
+        }
 
-.card.three {
-    background: linear-gradient(135deg, #eee, #aaa);
-}
+        /* =========================
+           Q&A
+        ========================= */
 
-.card-content {
-    color: white;
-    position: relative;
-    z-index: 2;
-}
+        .qa {
+            margin-bottom: 75px;
+        }
 
-.card-content span {
-    font-size: 11px;
-    letter-spacing: 2px;
-}
+        .label {
+            margin-bottom: 16px;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #777;
+        }
 
-.card-content h3 {
-    font-size: 45px;
-    font-weight: 400;
-    margin-top: 8px;
-}
+        .question {
+            margin-bottom: 14px;
+            font-weight: bold;
+        }
 
-.footer {
-    border-top: 1px solid #171717;
-    margin: 0 35px;
-    padding: 20px 0 40px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
+        .answer {
+            margin-bottom: 30px;
+        }
 
-@media (max-width: 600px) {
+        .translation {
+            margin-top: 35px;
+            padding-top: 28px;
+            border-top: 1px solid #d8d5d0;
+        }
 
-    .hero {
-        padding: 20px;
-    }
+        .translation .question {
+            font-weight: bold;
+        }
 
-    .hero-title h1 {
-        font-size: 18vw;
-        letter-spacing: -2px;
-    }
+        .translation .answer {
+            color: #333;
+        }
 
-    .intro {
-        padding: 80px 20px;
-    }
+        /* =========================
+           FOOTER
+        ========================= */
 
-    .intro p {
-        font-size: 21px;
-    }
+        .footer {
+            margin-top: 100px;
+            padding-top: 30px;
+            border-top: 1px solid #ccc;
+            text-align: center;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #888;
+        }
 
-    .archive {
-        padding: 0 20px 70px;
-    }
+        /* =========================
+           MOBILE
+        ========================= */
 
-    .card {
-        min-height: 55vh;
-    }
+        @media (max-width: 600px) {
 
-    .card-content h3 {
-        font-size: 32px;
-    }
+            .archive {
+                padding: 20px 12px 50px;
+            }
 
-    .footer {
-        margin: 0 20px;
-    }
-}
-</style>
+            .header {
+                padding: 25px 0 35px;
+            }
+
+            .header h1 {
+                font-size: 30px;
+                letter-spacing: 4px;
+            }
+
+            .interview {
+                margin-top: 60px;
+                padding-top: 40px;
+            }
+
+            .interview-title {
+                margin-bottom: 50px;
+            }
+
+            .interview-title h2 {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+
+            .qa {
+                margin-bottom: 55px;
+            }
+
+            body {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
+
 
 <body>
 
-<section class="hero">
+<div class="archive">
 
-    <div class="top">
-        <span>SIWOO ARCHIVE</span>
-        <span>2026</span>
-    </div>
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-    <div class="hero-title">
-        <h1>PARK<br>SIWOO</h1>
-        <p>MILAN · SEPTEMBER 2026</p>
-    </div>
-
-</section>
+    <header class="header">
+        <h1>SIWOO ARCHIVE</h1>
+        <p>MARIE CLAIRE KOREA · INTERVIEW</p>
+    </header>
 
 
-<section class="intro">
+    <!-- =========================
+         MAGAZINE PAGES
+    ========================= -->
 
-    <h2>01 — MILAN FASHION WEEK</h2>
+    <section class="magazine-pages">
 
-    <p>
-        A small archive of Park Siwoo's
-        Milan Fashion Week journey.
-        From the streets of Milan to the
-        MM6 runway.
-    </p>
+        <img src="page1.jpg" alt="SIWOO magazine page 1">
+        <img src="page2.jpg" alt="SIWOO magazine page 2">
+        <img src="page3.jpg" alt="SIWOO magazine page 3">
+        <img src="page4.jpg" alt="SIWOO magazine page 4">
+        <img src="page5.jpg" alt="SIWOO magazine page 5">
+        <img src="page6.jpg" alt="SIWOO magazine page 6">
+        <img src="page7.jpg" alt="SIWOO magazine page 7">
+        <img src="page8.jpg" alt="SIWOO magazine page 8">
+        <img src="page9.jpg" alt="SIWOO magazine page 9">
+        <img src="page10.jpg" alt="SIWOO magazine page 10">
 
-</section>
+    </section>
 
 
-<section class="archive">
+    <!-- =========================
+         INTERVIEW
+    ========================= -->
 
-    <div class="archive-title">
-        <span>ARCHIVE</span>
-        <span>01—03</span>
-    </div>
+    <section class="interview">
 
-    <div class="card one">
-        <div class="card-content">
-            <span>MILAN · 2026.09</span>
-            <h3>ARRIVAL</h3>
+        <div class="interview-title">
+            <h2>INTERVIEW</h2>
+            <p>FULL OF DREAMS · PARK SIWOO</p>
         </div>
-    </div>
-
-    <div class="card two">
-        <div class="card-content">
-            <span>MM6 · MILAN</span>
-            <h3>THE SHOW</h3>
-        </div>
-    </div>
-
-    <div class="card three">
-        <div class="card-content">
-            <span>MILAN · STREET</span>
-            <h3>AFTER SHOW</h3>
-        </div>
-    </div>
-
-</section>
 
 
-<footer class="footer">
+        <!-- Q&A 01 -->
 
-    <span>FOR SIWOO</span>
-    <span>TO BE CONTINUED</span>
+        <article class="qa">
 
-</footer>
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 오늘도 촬영을 앞두고 볼을 부풀리는 순간이 있겠죠?
+                촬영이 시작되기 전 습관 중 하나가 볼을 부풀리는 것이라 들었어요.
+            </div>
+
+            <div class="answer">
+                A. 첫 촬영을 앞두면 늘 긴장되는데, 그때마다 저도 모르게 볼을 부풀리고 있더라고요.
+                숨을 고르려는 무의식적 행동이 아닌가 싶어요. 집중하기 전 습관일 수도 있고요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 今天在拍摄开始前，也会有鼓起脸颊的瞬间吧？
+                    听说你在拍摄开始前的习惯之一，就是鼓起脸颊。
+                </div>
+
+                <div class="answer">
+                    A. 每次面对第一次拍摄时，我都会紧张，不知不觉就会鼓起脸颊。
+                    我觉得这可能是为了调整呼吸而下意识做出的动作，
+                    也可能是集中精神之前的一种习惯。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 02 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 언제나 새로운 환경을 마주해야 하는 상황에서 긴장을 푸는 방식일 수 있겠네요.
+            </div>
+
+            <div class="answer">
+                A. 예전에는 긴장도가 매우 높았는데, 요즘은 점점 즐기게 되는 것 같아요.
+                모든 경험이 하나하나 언제 다시 하게 될지 모른다고 생각하니까 소중하게 느껴지고,
+                잘 겪어내고 싶더라고요.
+                오늘 찍는 &lt;마리끌레르&gt; 화보도 어디 가서 이런 경험을 해보겠어요.
+                이런 생각으로 즐기려고 해요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 在总要面对新环境的情况下，这也可以算是一种放松紧张的方式吧。
+                </div>
+
+                <div class="answer">
+                    A. 以前我的紧张程度非常高，但最近好像越来越能够享受这样的过程了。
+                    因为我会觉得，每一次经历都不知道什么时候还能再次遇到，
+                    所以每一段经历都变得很珍贵，也想好好地去经历它。
+                    就像今天拍摄《Marie Claire》的画报，这样的经历又能去哪里遇到呢？
+                    所以我想抱着这样的想法去享受它。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 03 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 생애 첫 드라마의 첫 촬영 날을 회상해보면 어떤 감정이 생각나나요?
+                지금처럼 즐기려는 마음의 여유가 없었을 것 같기도 해요.
+            </div>
+
+            <div class="answer">
+                A. 아이돌에서 배우로 전향한 뒤 맡은 첫 작품인데,
+                게다가 주연이라는 엄청난 기회가 온 거잖아요.
+                촬영에 들어가기 전까지도 ‘진짜 하는 건가?’ 하는 생각을 매일 한 것 같아요.
+                걱정이 아주 많았어요.
+                당연히 당시에는 즐기지 못했죠.
+                마지막 회차까지 걱정과 긴장을 내려놓지 못한 것 같아요.
+                그래서 아쉬운 점이 많이 보였고요.
+                지금 돌이켜보면 긴장을 조금이라도 내려놓고 더 잘할 수 있었을 텐데 싶지만,
+                반대로 생각하면 그것이 하나의 경험이 되어 지금 같은 마인드를 갖게 된 것 같아요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 回想人生中第一部电视剧的第一天拍摄，你会想起怎样的心情？
+                    感觉那时候应该还没有像现在这样能够享受其中的从容。
+                </div>
+
+                <div class="answer">
+                    A. 那是我从偶像转型成为演员之后接到的第一部作品，
+                    而且还是主演，是一个非常难得的机会。
+                    直到正式进入拍摄之前，我好像每天都在想：
+                    “真的要开始了吗？”
+                    当时有很多担心，当然也没办法好好享受拍摄的过程。
+                    好像直到最后一集，我都没能真正放下担忧和紧张。
+                    所以现在回头看，也能看到很多觉得遗憾的地方。
+                    如果当时能够稍微放下一点紧张，也许可以做得更好。
+                    但换一个角度想，那段经历也成为了一种经验，
+                    让我拥有了现在这样的心态。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 04 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 첫 작품이 이토록 많은 관심을 받게 될 거라 예감했나요?
+            </div>
+
+            <div class="answer">
+                A. 무언가를 선택할 때 항상 자신감은 있는 편이라
+                엄청난 사랑까지는 아니어도 관심을 끌 수는 있을 거라고 생각했어요.
+                내심 어느 정도 기대는 했던 거죠. (웃음)
+                결과적으로 기대를 훌쩍 넘는 사랑을 받았고 그래서 지금도 얼떨떨해요.
+                한편으론 두렵기도 하고요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 有预想到自己的第一部作品会受到这么多关注吗？
+                </div>
+
+                <div class="answer">
+                    A. 我在做选择的时候一直都比较有自信，
+                    所以虽然没有想到会得到如此巨大的喜爱，
+                    但觉得应该能够引起一些关注。
+                    其实内心还是有一定期待的（笑）。
+                    结果最终得到的喜爱远远超出了预期，
+                    所以直到现在还是觉得有些恍惚。
+                    另一方面，也会觉得有些害怕。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 05 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 어떤 두려움인가요?
+            </div>
+
+            <div class="answer">
+                A. 처음부터 많은 사랑을 받았기 때문에 다음에 대한 고민이 커진 것 같아요.
+                또 비판적인 피드백도 있다 보니,
+                그 부분을 잘 개선해서 보여줘야겠다는 부담도 있고요.
+                발음을 지적하는 분들이 있어서 언어 습관을 살펴보고 고쳐나가는 중이에요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 是怎样的害怕呢？
+                </div>
+
+                <div class="answer">
+                    A. 因为一开始就得到了很多喜爱，
+                    所以好像也开始更加思考接下来该怎么办。
+                    而且也会收到一些批评性的反馈，
+                    所以也会有一种压力，希望能够把这些部分好好改善之后再展现给大家。
+                    有人指出我的发音问题，
+                    所以我现在也在观察自己的语言习惯，并慢慢进行调整和改正。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 06 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 서바이벌 프로그램부터 아이돌 데뷔,
+                그리고 배우로 전향하기까지 매번 새로운 도전의 연속이었어요.
+                도전 앞에서 주저하지 않는 편인가요?
+            </div>
+
+            <div class="answer">
+                A. 누구에게나 삶 자체가 도전이라고 생각해요.
+                다만 저는 그 안에서 안정적이기보다 맞닥뜨리는 쪽을 택하는 편이고요.
+                계속하면 언젠가 좋은 순간이 온다는 말을 믿거든요.
+                포기하고 싶은 순간도 있었지만,
+                계속 도전하고 또 도전하면서 훌륭한 작품도 만나고 사랑도 받게 된 것 같아요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 从生存节目、偶像出道，到转型成为演员，
+                    一直都是不断迎接新挑战的过程。
+                    面对挑战时，你是不太会犹豫的人吗？
+                </div>
+
+                <div class="answer">
+                    A. 我觉得对每个人来说，人生本身就是一种挑战。
+                    只不过，比起在其中选择稳定的道路，
+                    我更倾向于直接去面对它。
+                    因为我相信，只要坚持下去，总有一天会迎来美好的时刻。
+                    虽然也有过想要放弃的瞬间，
+                    但正是在不断挑战、再挑战的过程中，
+                    我遇到了优秀的作品，也得到了大家的喜爱。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 07 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 삶에서 가장 큰 도전이라 느낀 건 무엇이었나요?
+            </div>
+
+            <div class="answer">
+                A. 최근 이너프라는 제 회사를 설립했어요.
+                이 일이 지금까지 제 삶에서 가장 큰 도전이자 모험이지 않나 싶어요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 你觉得人生中最大的挑战是什么？
+                </div>
+
+                <div class="answer">
+                    A. 最近成立了属于自己的公司 INUFF。
+                    我觉得这件事应该是到目前为止，
+                    我人生中最大的挑战，也是最大的冒险。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 08 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 어떤 계기로 엔터테인먼트 회사를 차리겠다는 생각을 했어요?
+            </div>
+
+            <div class="answer">
+                A. 어릴 때부터 품은 궁극적인 최종 꿈이었어요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 是什么契机让你产生了成立娱乐公司的想法？
+                </div>
+
+                <div class="answer">
+                    A. 这是我从小就怀抱着的最终梦想。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 09 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 몇 살 때 처음 품은 꿈인가요?
+            </div>
+
+            <div class="answer">
+                A. 중학교 3학년 때요.
+                어릴 때는 꿈이 되게 크잖아요.
+                대통령이 되고 싶다, 우주로 가고 싶다, 이런 식으로요.
+                그게 제겐 엔터테인먼트 회사를 운영하는 거였어요.
+                물론 첫 번째 꿈은 배우가 되는 것이었지만,
+                거기서 멈추지 않고 저와 같은 꿈을 가진 사람에게 좋은 길을 터주고 싶은 게 최종적인 꿈이었어요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 是几岁的时候第一次有这样的梦想？
+                </div>
+
+                <div class="answer">
+                    A. 初中三年级的时候。
+                    小时候的梦想都很宏大嘛。
+                    比如想成为总统、想去宇宙之类的。
+                    对我来说，那就是经营一家娱乐公司。
+                    当然，我最初的梦想是成为演员，
+                    但我不想在那里停下来。
+                    我最终的梦想，是为那些和我拥有相同梦想的人开辟一条更好的道路。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 10 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 약 10년 만에 그 꿈을 이뤘네요.
+                최종 꿈을 이뤘지만 그것이 피니시 라인을 통과했다는 의미는 아닐 거라 생각해요.
+                그 꿈을 어떻게 발전시켜가는 중인가요?
+            </div>
+
+            <div class="answer">
+                A. 비교적 어린 나이에 회사를 세우다 보니,
+                긍정적 시선보다는 부정적 시선이 더 많은 게 사실이에요.
+                무모하다, 돈 날리는 일이다,
+                네가 아직 성공한 아티스트가 아닌데 어떻게 엔터테인먼트 회사를 꾸릴 수 있냐 하는 등
+                부정적인 얘기를 많이 들었어요.
+                그것도 아예 틀린 말은 아니에요.
+                그렇지만 저는 그 말에 흔들리진 않아요.
+
+                그런 분들에게 무모해 보이지만 그래서 더 재미있을 테니 지켜봐달라고 말해요.
+                이 도전이 나중에 어떤 미래를 가져올지 모르지만,
+                그게 성공이든 실패든 제가 성장하는 길이 될 거라 믿어요.
+                어디까지 갈지, 그 과정을 잘 지켜보고 싶어요.
+
+                구체적으로는 이너프와 함께할 아티스트를 잘 꾸리고 싶고,
+                저 역시 소속 배우 중 하나로 잘 성장해서 이너프의 간판 배우가 되는 것이 목표예요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 大约用了10年的时间实现了这个梦想。
+                    虽然实现了最终的梦想，但我想这并不意味着已经跨过了终点线。
+                    你正在如何继续发展这个梦想呢？
+                </div>
+
+                <div class="answer">
+                    A. 因为是在相对年轻的时候成立公司，
+                    所以事实上，比起正面的目光，收到的负面评价更多。
+
+                    我听过很多类似“太鲁莽了”“这是在浪费钱”、
+                    “你现在还不是一个成功的艺人，怎么能够经营一家娱乐公司”等等这样的话。
+
+                    这些话也不能说完全没有道理。
+                    但我不会因为这些话而动摇。
+
+                    对这些人，我会说，虽然看起来很鲁莽，
+                    但正因为如此才会更有趣，所以请继续关注看看。
+
+                    我不知道这次挑战未来会带来怎样的结果，
+                    但无论是成功还是失败，
+                    我都相信这会成为让我成长的一条道路。
+
+                    我也想好好看看自己最终能走到哪里，以及一路上的过程。
+
+                    具体来说，我希望能够好好组建与 INUFF 一起同行的艺人阵容，
+                    同时我自己也作为旗下演员之一不断成长，
+                    最终成为 INUFF 的招牌演员。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 11 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 배우라는 직업이 '내가 살아가는 이유'라고 표현한 적이 있어요.
+                이 일의 가장 큰 매력은 무엇이라 생각하나요?
+            </div>
+
+            <div class="answer">
+                A. 부모님이 해주신 얘기인데,
+                제가 돌잔치 때부터 관심을 즐겼다고 하더라고요. (웃음)
+                장래 희망도 늘 연예인이나 배우였고요.
+                그래서인지 어린 나이에 꿈을 이루기 위해 홀로 서울에 간다고 했을 때도
+                부모님은 반대하지 않으셨어요.
+                제 꿈을 온전히 지지해주셨죠.
+
+                그런 걸 생각해보면 본능적으로 이 일에 끌리는 것이 아닌가 싶어요.
+                한편으로는 잘될 수도, 잘되지 않을 수도 있는 불확실성이
+                더 열심히 살게 만드는 것 같기도 해요.
+
+                언제 어떤 기회를 만나게 될지 모르니 자꾸 뭔가를 하게 되는데,
+                그 노력이 저를 성장시키는 것 같아요.
+                그래서 매력적인 일이 아닌가 싶어요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 你曾经说过，演员这个职业是“我活着的理由”。
+                    你觉得这份工作的最大魅力是什么？
+                </div>
+
+                <div class="answer">
+                    A. 这是父母告诉我的，
+                    他们说从我周岁宴的时候开始，我就很享受受到关注（笑）。
+
+                    我从小的将来愿望也一直都是成为艺人或者演员。
+                    所以当我年纪还很小、说想要独自去首尔实现梦想的时候，
+                    父母也没有反对。
+                    他们完全支持我的梦想。
+
+                    这样想起来，我可能就是本能地被这份工作吸引吧。
+
+                    另一方面，这份工作存在着可能成功、也可能不成功的不确定性，
+                    好像也让我更加努力地生活。
+
+                    因为不知道什么时候会遇到怎样的机会，
+                    所以总会不断去做些什么，
+                    而这些努力好像又让我不断成长。
+
+                    所以我觉得，这也正是它有魅力的地方。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 12 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 방향이 정해진 안전한 길이 아니라
+                불확실해도 흥미로운 길을 택하는 쪽이네요.
+            </div>
+
+            <div class="answer">
+                A. 답이 보이면 재미없잖아요.
+                몰라서 더 흥미로운 일도 있는 것 같아요.
+
+                바람이 있다면 그 길이 되도록 아주 오래 이어졌으면 해요.
+                잘되는 것보다 오래 지속하는 것이 더 어렵다고 생각하거든요.
+
+                그만큼 대중의 사랑을 꾸준히 받아야 하고,
+                작가님과 감독님에게 계속 같이 일하고 싶은 배우가 되어야 하는 거잖아요.
+
+                그래서 어떤 작품을 하고 싶다거나,
+                무슨 상을 받고 싶다거나 하기보다
+                여든 살, 아흔 살이 되어서도 배우로 살아가고 싶은 게 제 바람이에요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 比起选择一条方向明确、安全的道路，
+                    你更倾向于选择即使不确定，却充满趣味的道路。
+                </div>
+
+                <div class="answer">
+                    A. 如果答案一开始就摆在那里，不是会很无趣吗？
+                    有些事情正因为不知道答案，反而会更加有趣。
+
+                    如果说有什么愿望的话，
+                    我希望这条路能够尽可能长久地延续下去。
+                    因为我觉得，比起获得成功，坚持长久地走下去更加困难。
+
+                    这意味着需要持续得到大众的喜爱，
+                    也要成为让编剧和导演愿意一直合作下去的演员。
+
+                    所以比起“想出演什么作品”或者“想获得什么奖”，
+                    我的愿望是到了八十岁、九十岁，
+                    依然能够作为演员生活下去。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 13 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 지금은 또 어떤 도전을 준비하고 있나요?
+                두렵지만 주저하지 않고 무엇을 마주하는 중이에요?
+            </div>
+
+            <div class="answer">
+                A. 첫 드라마 때와 다른 모습을 보여드릴 수 있는 새로운 작품을 앞두고 있습니다.
+
+                좋은 작품을 보면 집에 가서도, 다음 날에도 계속 생각이 이어지잖아요.
+                그렇게 여운을 남길 수 있는 배우가 되기 위해 계속 도전할 생각입니다.
+
+                또 이전에 해본 적 없는, 아주 새로운 도전도 준비 중이에요.
+
+                그래서 다음에는 더 성장해서,
+                덜 긴장한 채 (웃음)
+                마리끌레르와 만나면 좋을 것 같아요.
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 现在又在准备怎样的挑战呢？
+                    虽然会害怕，但你正在毫不犹豫地面对什么？
+                </div>
+
+                <div class="answer">
+                    A. 现在正准备一部新的作品，
+                    希望能够展现出与第一部电视剧时不同的一面。
+
+                    看到一部好的作品，
+                    即使回到家、到了第二天，还是会一直想着它，对吧？
+
+                    我希望成为能够给观众留下这样余韵的演员，
+                    所以会继续不断挑战。
+
+                    另外，我也正在准备一个以前从未尝试过的、
+                    非常全新的挑战。
+
+                    所以下次如果能够以更加成长、
+                    也更加不紧张的状态（笑），
+                    再次与《Marie Claire》见面就好了。
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Q&A 14 -->
+
+        <article class="qa">
+
+            <div class="label">ORIGINAL</div>
+
+            <div class="question">
+                Q. 수많은 도전의 틈에서 언젠간 다시 만날 수 있을 거란
+                기대와 예감이 드네요.
+            </div>
+
+            <div class="answer">
+                A. 아마 곧 다시 만나지 않을까요? (웃음)
+            </div>
+
+
+            <div class="translation">
+
+                <div class="label">TRANSLATION</div>
+
+                <div class="question">
+                    Q. 在无数次挑战之间，让人不禁期待，
+                    也隐约感觉我们总有一天还会再次见面。
+                </div>
+
+                <div class="answer">
+                    A. 应该很快就会再次见面吧？（笑）
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+        SIWOO ARCHIVE · MARIE CLAIRE KOREA
+    </footer>
+
+</div>
 
 </body>
 </html>
